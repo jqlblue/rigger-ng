@@ -19,30 +19,6 @@ class rgtag:
     pass
 
 
-
-class nginx (resource,svctag):
-    """support nginx"""
-    _need_reload = True
-    def local(self):
-        self.need_reload = env_exp.value(self.need_reload)
-
-    def start(self):
-        self.reload()
-    def stop(self):
-        pass
-    def reload(self):
-        if self.need_reload  :
-            cmd = get_env_conf().nginx_ctrl + ' reload '
-            shexec.execmd(cmd)
-    def check(self):
-        cmd = "ps auxww | grep nginx   "
-        check_proc("Nginx",cmd)
-        ngx_test = get_env_conf().nginx_ctrl.replace(" -s","")
-        ngx_test += " -t "
-        cmd = " sudo rm -rf /tmp/nginx_ok  ; if  " +  ngx_test + "  ; then  sudo  touch  /tmp/nginx_ok ;  fi  "
-        shexec.execmd(cmd)
-        self.check_print(os.path.exists("/tmp/nginx_ok"),"nginx conf")
-
 class local_proxy(resource,svctag):
     """local_proxy service
        使用同 nginx
@@ -90,20 +66,6 @@ class tpl(resource,filetag):
         return self.dst
 
 
-class nginx_conf_tpl( file_tpl,svctag ):
-    _mod    = "a+w"
-    def config(self):
-        file_tpl.config(self)
-        dst_path  = get_env_conf().nginx_conf_path
-        tpl =  'if test  -L $PATH/$DST ; then rm $PATH/$DST ; fi; ln -s $SRC $PATH/$DST'
-        cmd = Template(tpl).substitute(PATH=dst_path, DST=os.path.basename(self.dst), SRC=self.dst)
-        shexec.execmd(cmd)
-    def clean(self):
-        dst_path  = get_env_conf().nginx_conf_path
-        tpl =  'if test -L $PATH/$DST ; then rm $PATH/$DST ; fi ; if test -e $SRC ; then  rm  $SRC; fi ;'
-        cmd = Template(tpl).substitute(PATH=dst_path, DST=os.path.basename(self.dst), SRC=self.dst)
-        shexec.execmd(cmd)
-
 class local_proxy_conf( file_tpl,svctag ):
     """
         使用同 nginx_conf_tpl
@@ -124,20 +86,6 @@ class local_proxy_conf( file_tpl,svctag ):
         cmd = Template(tpl).substitute(PATH=self.link, DST=os.path.basename(self.dst), SRC=self.dst)
         shexec.execmd(cmd)
 
-class apache_conf_tpl( file_tpl,svctag ):
-    _mod    = "a+w"
-    def config(self):
-        file_tpl.config(self)
-        dst_path  = get_env_conf().apache_conf_path
-        tpl =  'if test -L $PATH/$DST ; then rm $PATH/$DST ; fi ;ln -s $SRC $PATH/$DST'
-        cmd = Template(tpl).substitute(PATH=dst_path, DST=os.path.basename(self.dst), SRC=self.dst)
-        shexec.execmd(cmd)
-    def clean(self):
-        dst_path  = get_env_conf().apache_conf_path
-        tpl =  'if test -L $PATH/$DST ; then  rm $PATH/$DST ; fi; if test -e $SRC ; then rm $SRC ; fi;'
-        cmd = Template(tpl).substitute(PATH=dst_path, DST=os.path.basename(self.dst), SRC=self.dst)
-        shexec.execmd(cmd)
-
 
 class logrotate( file_tpl ,svctag):
     _mod    = "a+w"
@@ -152,19 +100,6 @@ class logrotate( file_tpl ,svctag):
         tpl =  'if test -e $PATH/$DST ; then  rm $PATH/$DST ; fi; if test -e $SRC ; then rm $SRC ; fi;'
         cmd = Template(tpl).substitute(PATH=dst_path, DST=os.path.basename(self.dst), SRC=self.dst)
         shexec.execmd(cmd)
-
-class apache (resource,svctag):
-    def start(self):
-        self.reload()
-    def stop(self):
-        pass;
-    def reload(self):
-        cmd = get_env_conf().apache_ctrl + ' graceful'
-        shexec.execmd(cmd)
-
-    def check(self):
-        cmd = "ps auxww | grep httpd "
-        check_proc("Apache",cmd)
 
 
 #class files (resource):
