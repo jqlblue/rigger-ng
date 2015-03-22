@@ -13,6 +13,11 @@ def run_cmd(cmdstr,yaml_conf=None) :
 
     run_rigger(rargs,parser.argv)
 
+
+#实例化cmd对象
+#执行父类prj_cmd_base的_config初始化输入的  环境env 和系统sys
+#aop的方式执行相应的方法
+
 def run_rigger(rargs, argv) :
     #TODO: muti cmd support
     if len(rargs.prj.cmds) == 0 :
@@ -23,6 +28,9 @@ def run_rigger(rargs, argv) :
         if obj is None :
             raise  interface.rigger_exception( "unfound '%s' cmd instance" %cmd)
         rg_logger.info("cmd: %s , cmd_ins : %s" %(cmd,obj.__class__.__name__))
+        #初始化输入的环境-e env和系统-s sys
+        #rargs 是是运行时参数对象
+        #argv是输入参数
         obj._config(argv,rargs)
         obj._execute(rargs)
 

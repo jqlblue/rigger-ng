@@ -4,6 +4,7 @@ from string  import Template
 import  setting
 import  utls.pattern
 
+#运行栈
 class run_struct:
     trace   = []
     @staticmethod
@@ -79,6 +80,8 @@ class prompt:
 
 
 
+#主要控制日志的输入
+#设置日志的缓存buf和 输出的资源及tag
 class scope_iotag :
     tags = []
     def __init__(self,res,tag):

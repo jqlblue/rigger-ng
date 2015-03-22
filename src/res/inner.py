@@ -17,6 +17,7 @@ class vars(interface.resource):
 
     def _allow(self,context):
         return True
+    #将配置文件中的vars的kv加载如上下文对象
     def _before(self,context):
         items = self.__dict__
         # run_struct.push("res.var")
@@ -135,9 +136,11 @@ class prj_main(interface.control_box, interface.base) :
         rgio.struct_out("rg: %s" %(self._name))
         interface.control_box._info(self,context)
     def _before(self,context):
+        # print "inner 138 main:start"
         rg_logger.info("main: start")
 
     def _after(self,context):
+        # print "inner 143 main:end"
         rg_logger.info("main: end")
 
 class xmodule(interface.control_box,interface.base) :
@@ -152,6 +155,7 @@ class xmodule(interface.control_box,interface.base) :
         interface.control_box._info(self,context)
 
 
+#环境的实体
 class env(vars):
     """
 
@@ -161,6 +165,8 @@ class env(vars):
     def _info(self,context):
         rgio.struct_out("env: %s" %(self._name))
 
+    #执行父类vars的_before方法，以获取
+    #yaml配置中 env的vars属性
     def _before(self,context):
         rg_logger.info("env:%s start" %(self._name))
         vars._before(self,context)

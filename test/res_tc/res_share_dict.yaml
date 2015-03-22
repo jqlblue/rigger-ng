@@ -10,12 +10,11 @@ _prj: !R.project
                 PRJ_KEY : "RG_UT"
                 PRJ_ROOT: "${HOME}/devspace/rigger-ng"
 
-
 _sys:
     -  !R.system
-        _name: "mysql"
+        _name: "share_dict"
         _res:
-            - !R.mysql
-                init: "${HOME}/devspace/rigger-ng/test/data/init.sql"
-            - !R.vars
-                test: "have a release"
+            - !R.share_dict
+                name: "DICT_WORD"
+                size: "10"
+                file: "${PRJ_ROOT}/test/data/dict.txt"

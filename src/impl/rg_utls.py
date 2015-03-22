@@ -1,6 +1,5 @@
 #coding=utf-8
 import sys,re,os,string,logging  , setting
-import rg_sh
 from string  import Template
 import inner
 from utls.rg_io import *
@@ -20,6 +19,12 @@ def get_key(prompt,context = None):
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
+
+def check_proc(svc, found_cmd,expect_cn="1"):
+    init=Template("V='-[ ]';SNAME=$NAME;PCNT=`$FOUND -c `; PCMD='$FOUND'; ").substitute(NAME=svc,FOUND=found_cmd)
+    rev=  init +  "if test $PCNT -ge " + expect_cn + "; then V='-[Y]'; fi ;"
+    cmd=  rev  +  """printf "%-100.90s%-20.20s%s\n" "$PCMD" "$SNAME($PCNT)" "$V" """
+    shexec.execmd(cmd)
 
 
 class force_enable:

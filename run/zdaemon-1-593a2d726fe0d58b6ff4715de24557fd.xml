@@ -1,0 +1,151 @@
+
+<runner>
+    program         /usr/local/php-5.3/bin/php -c /home/chenrishen/devspace/rigger-ng/test/data/php.ini -f /home/chenrishen/devspace/cleaner//src/apps/console/canal/chat_q.php 
+    backoff-limit   10
+    daemon          True
+    forever         True
+    exit-codes      0,2
+    umask           022
+    directory       .
+    default-to-interactive True
+    hang-around     False
+    transcript      /tmp/rigger/RG_UT//zout.log.593a2d726fe0d58b6ff4715de24557fd_1
+    socket-name     /home/chenrishen/devspace/rigger-ng/run//593a2d726fe0d58b6ff4715de24557fd_1.sock
+</runner>
+
+<eventlog>
+    level info
+    <logfile>
+    path /tmp/rigger/RG_UT//zrun.log.593a2d726fe0d58b6ff4715de24557fd_1
+    </logfile>
+</eventlog>
+
+<environment>
+ 	HTTP_PROXY http://10.16.13.18:8080 
+	SKIT_G git@git.1360.com:statkit.git 
+	GAME_STAT_HOME /home/chenrishen/devspace//game_stat 
+	GAME_ALBUM_HOME /home/chenrishen/devspace/game_album 
+	PICASSO_HOME /home/chenrishen/devspace/picasso 
+	SHELL /bin/bash 
+	UMS_HOME /home/chenrishen/devspace/ums 
+	HAO_REMIND_HOME /home/chenrishen/devspace/hao_remind 
+	IMG_G git@git.1360.com:imgstore.git 
+	HISTSIZE 1000 
+	JAVA_HOME /usr/java/jdk1.7.0_21 
+	GSTATE_G git@git.1360.com:gstate.git 
+	GAME_TEAM_HOME /home/chenrishen/devspace//game_team 
+	PYLON_HOME /home/chenrishen/devspace/pylon 
+	WESKIT git@git.1360.com:weskit.git 
+	DEV_SPACE /home/chenrishen/devspace/ 
+	SVR /home/q/tools/game_team/svr 
+	DOG_G git@git.1360.com:hao_dog.git 
+	TAO_GIT git@git.1360.com:hao_tao.git 
+	PICASSO_GR git@git.1360.com:picasso_release.git 
+	SSH_CONNECTION 10.18.111.143 63967 10.16.73.22 22 
+	STATKIT_HOME /home/chenrishen/devspace//statkit 
+	SNOOPY_HOME /home/chenrishen/devspace/snoopy 
+	HOSTNAME xen12.wd.corp.qihoo.net 
+	PIGEON_G git@git.1360.com:pigeon.git 
+	PYL_GR git@git.1360.com:pylon_release.git 
+	GAPPS_G git@git.1360.com:gapps.git 
+	MAIL /var/spool/mail/chenrishen 
+	PIGEON_HOME /home/chenrishen/devspace/pigeon 
+	SSH_ASKPASS /usr/libexec/openssh/gnome-ssh-askpass 
+	GOPATH /home/chenrishen/devspace/apollo 
+	WESKIT_HOME /home/chenrishen/devspace/weskit 
+	GOROOT /usr/local/go 
+	OPEN_GAME_HOME /home/chenrishen/devspace/open_game 
+	LESSOPEN |/usr/bin/lesspipe.sh %s 
+	CVS_RSH ssh 
+	USER chenrishen 
+	INPUTRC /etc/inputrc 
+	GALBUM_HOME /home/chenrishen/devspace/galbum 
+	TEAM_HOME /home/q/tools/game_team 
+	SHLVL 2 
+	PYL_G git@git.1360.com:pylon.git 
+	GCOMMENT_HOME /home/chenrishen/devspace/gcomment 
+	IMG_GR git@git.1360.com:imgstore_release.git 
+	SKIT_GR git@git.1360.com:statkit_release.git 
+	HAO_TUAN_HOME /home/chenrishen/devspace/hao_tuan 
+	OPEN360_HOME /home/chenrishen/devspace/open360 
+	CLASSPATH .:/usr/java/jdk1.7.0_21/lib 
+	WAN360CN_GIT git@git.1360.com:wan360cn.git 
+	G git@git.1360.com 
+	GSPY_G git@git.1360.com:gspy.git 
+	GAME_ALBUM_G git@git.1360.com:game_album.git 
+	WAN_G git@git.1360.com:wan360.git 
+	LUA_CPATH ;;/home/q/lua/modules/?.so;/usr/local/lib/lua/5.1/?.so 
+	GD_GIT git@git.1360.com:gamedict.git 
+	GDR_GIT git@git.1360.com:gamedict_release.git 
+	GMSG_G git@git.1360.com:gmsg.git 
+	GTRIAL_HOME /home/chenrishen/devspace/gtrial 
+	_ /usr/local/bin/python 
+	GCOMET_G git@git.1360.com:gcomet.git 
+	LS_COLORS no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35: 
+	GST_G git@git.1360.com:game_stat.git 
+	GAME_TEAM git@git.1360.com:game_team.git 
+	GTPL /home/q/tools/game_team/tpl 
+	GSTATE_HOME /home/chenrishen/devspace/gstate 
+	GST_GR git@git.1360.com:game_stat_release.git 
+	WALLE_HOME /home/chenrishen/devspace/walle 
+	OPENGAME_GR git@git.1360.com:open_game_release.git 
+	SNOOPY_G git@git.1360.com:snoopy.git 
+	CUC_G git@git.1360.com:cuckoo.git 
+	CUC_GR git@git.1360.com:cuckoo_release.git 
+	HAODOG_HOME /home/chenrishen/devspace/hao_dog 
+	SLI_G git@git.1360.com:slingshot.git 
+	HOME /home/chenrishen 
+	LANG zh_CN.UTF-8 
+	G_BROKEN_FILENAMES 1 
+	GEVENT_G git@git.1360.com:gevent.git 
+	WAN_GR git@git.1360.com:wan360_release.git 
+	GFRONT_HOME /home/chenrishen/devspace/gfront 
+	QSTATIC_HOME /home/chenrishen/devspace/qstatic 
+	GEVENT_HOME /home/chenrishen/devspace/gevent 
+	LUA_PATH ;;/home/q/lua/?.lua;/home/q/lua/base/?.lua 
+	TQ_SVC_HOME /home/chenrishen/devspace/tq_svc 
+	USER_CATEGORY_G git@git.1360.com:user_category.git 
+	PROM_GR git@git.1360.com:game_prom_release.git 
+	GCOMET_HOME /home/chenrishen/devspace/gcomet 
+	GALBUM_G git@git.1360.com:galbum.git 
+	GSVR git@git.1360.com 
+	DOG_GR git@git.1360.com:hao_dog_release.git 
+	PICASSO_G git@git.1360.com:picasso.git 
+	SLI_GR git@git.1360.com:slingshot_release.git 
+	WAN360CN_HOME /home/chenrishen/devspace/wan360cn 
+	SSH_TTY /dev/pts/54 
+	USER_CATEGORY_HOME /home/chenrishen/devspace/user_category 
+	HTTPS_PROXY http://10.16.13.18:8080 
+	ULTRA8_HOME /home/chenrishen/devspace/ultra8 
+	DESKAPP_HOME /home/chenrishen/devspace/deskapp 
+	ULTRA8_GIT git@git.1360.com:ultra8.git 
+	GCOMMENT_G git@git.1360.com:gcomment.git 
+	NAV_STAT_HOME /home/chenrishen/devspace/nav_stat 
+	GSR_GIT git@git.1360.com:game_store_release.git 
+	GAMESTORE_HOME /home/chenrishen/devspace/game_store 
+	SSH_CLIENT 10.18.111.143 63967 22 
+	LOGNAME chenrishen 
+	PATH /home/q/tools/pylon_rigger:/home/q/tools/game_team/bin:/usr/local/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/java/jdk1.7.0_21/bin:/usr/local/eventlog/sbin:/usr/local/eventlog/bin:/usr/local/syslog-ng/sbin:/usr/local/syslog-ng/bin:/usr/local/php-5.3/sbin:/usr/local/php-5.3/bin:/sbin:/usr/sbin:/usr/local/sbin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/luajit/bin:/usr/local/luajit/sbin:/usr/local/nginx/bin:/usr/local/nginx/sbin:/usr/local/zookeeper/bin:/usr/local/zookeeper/sbin:/usr/local/php-5.6/bin:/usr/local/php-5.6/sbin:/home/chenrishen/bin 
+	WAN360_HOME /home/chenrishen/devspace/wan360 
+	GSCORE_G git@git.1360.com:gscore.git 
+	TERM xterm 
+	SHOST xen12.wd.corp 
+	STATIC_SITE_HOME /home/chenrishen/devspace/static_site 
+	HAO_PROXY_HOME /home/chenrishen/devspace/hao_proxy 
+	PROM_G git@git.1360.com:game_prom.git 
+	SOX /home/q/tools/game_team/svr/sox.svr 
+	OPENGAME_G git@git.1360.com:open_game.git 
+	OPEN360R_GIT git@git.1360.com:open360_release.git 
+	SNOOPY_GR git@git.1360.com:snoopy_release.git 
+	MYTPL /home/chenrishen/devspace/game_team/src/tpl 
+	GFRONT_GIT git@git.1360.com:gfront.git 
+	GSCORE_HOME /home/chenrishen/devspace/gscore 
+	GS_GIT git@git.1360.com:game_store.git 
+	GSPY_HOME /home/chenrishen/devspace/gspy 
+	GAME_PROM_HOME /home/chenrishen/devspace/game_prom 
+	PWD /home/chenrishen/devspace/rigger-ng 
+	GAPPS_HOME /home/chenrishen/devspace/gapps 
+	OPEN360_GIT git@git.1360.com:open360.git 
+	GMSG_HOME /home/chenrishen/devspace/gmsg 
+
+</environment>

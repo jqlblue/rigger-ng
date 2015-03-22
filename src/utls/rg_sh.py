@@ -6,6 +6,9 @@ from utls.pattern import end_keeper
 from rg_io import *
 
 
+
+
+#shell 指令的执行器
 class shexec:
     DO        = True
     SUDO      = False
@@ -83,6 +86,7 @@ class shexec:
             return 0
         return 1
 
+#设置shell执行的开关
 class scope_sudo:
     def __init__(self,need):
         self.need = need

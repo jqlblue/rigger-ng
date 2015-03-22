@@ -3,8 +3,15 @@ from utls.rg_io import rgio , rg_logger
 from rg_cmd_base import  rg_cmd , cmdtag_rg , cmdtag_prj ,cmdtag_pub
 import utls.rg_var , interface
 import res
+from utls.rg_sh  import shexec
+import os
+from string import *
 
 class prj_cmd_base :
+
+
+    #初始化输入的环境-e env和系统-s sys
+    #rargs 是默认参数 argv是输入参数
     def _config(self,argv,rargs):
         self.env = []
         if argv.has_key('-e') :
@@ -19,6 +26,7 @@ class prj_cmd_base :
             self.sys = rargs.prj.sys.split(',')
 
 
+    #初步检查配置文件的属性和格式是否正确
     @staticmethod
     def check_data(data):
         if data is None :
@@ -27,35 +35,60 @@ class prj_cmd_base :
             return True
         raise interface.rigger_exception('project data maybe no _env,_prj,or _sys')
 
+
+    #指令执行器 rargs主要用于加载配置文件
     def runcmd(self,rargs,fun) :
         import impl.rg_yaml,copy
+        #加载j解析配置文件
         loader = impl.rg_yaml.conf_loader(rargs.prj.conf)
         rg_logger.info("load prj conf: %s" %(rargs.prj.conf))
         data   = loader.load_data("!R","res")
+        #初步检查配置文件的属性和格式是否正确
         prj_cmd_base.check_data(data)
 
+        #获取inner.env对像集（多环境的配置文件）
         env_data    = data['_env']
+        #获取inner.project对象
         prj_data    = data['_prj']
+        #获取inner.systen对象集合（多系统的配置文件）
         sys_data    = data['_sys']
 
+
+        #以下代码主要作用是将yaml文件中的
+        #env prj sys 这3类信息放入main_prj 的父类control_box
+        #的_res被作为一个内部资源的集合
+        #res.prj_main在res.inner 中
+        #同时作为一个资源递归调用的入口
         main  = res.prj_main()
         if len(self.env) == 0 :
             return
+
+        #注册环境配置
+        #查找输入的环境参数 对应在配置中yaml配置
         for env in self.env :
             for env_obj  in env_data :
                 if env_obj._name == env :
                     main.append(env_obj)
-        main.append(prj_data)
-        context = interface.run_context()
-        # interface.control_call(main,fun,context)
 
+        #注册项目配置
+        #因为项目只有一个，所以不用查找
+        main.append(prj_data)
+
+        #注册系统配置
+        #查找输入系统参数  对应在配置文件yaml配置
         if len(self.sys) > 0 :
             for sys in self.sys :
                 for sysobj in   sys_data :
                     if  sysobj._name ==  sys :
                         main.append(sysobj)
-                    # interface.control_call(sysobj,fun,context)
 
+        #运行时上下文对象
+        context = interface.run_context()
+        #解决自定义参数传递问题
+        context.rargs = rargs
+
+        #以aop的方式去链式的调用res资源
+        #以递归的方式深度优先去遍历执行yaml文件中配置的资源
         interface.control_call(main,fun,context,"unknow")
 
 class info_cmd(prj_cmd_base,cmdtag_prj):
@@ -130,8 +163,40 @@ class restart_cmd(prj_cmd_base,cmdtag_prj):
         self.runcmd(rargs,lambda x,y : x._stop(y))
         self.runcmd(rargs,lambda x,y : x._start(y))
 
+class find_cmd(prj_cmd_base,cmdtag_prj):
+    """
+    rg find -k <key> -s <sys> [-o <os>] "
+    """
+    def _execute(self,rargs):
 
-# class php_cmd(run_base,resconf_able,cmdtag_run):
+        self.runcmd(rargs,lambda x,y : x.find(y))
+        # from  res import  share_dict
+        #
+        # dict = share_dict()
+        # dict.find(rargs)
+
+
+class init_cmd(prj_cmd_base,cmdtag_prj):
+    """ 初始化环境 """
+    def _execute(self,rargs):
+        path=os.path.dirname(os.path.realpath(__file__))
+        path=os.path.dirname(path)
+        dst = os.getcwd() + "/_rg"
+        # if os.path.exists(dst) :
+        #     print(" _rg 已经存在！")
+        #     return
+        cmd = "~/devspace/rigger-ng/src/rg tpl $SRC -o $DST"
+        cmd = Template(cmd).substitute(SRC=path + "/tpl" , DST=dst)
+        # print cmd
+        # exit()
+        # shexec.execmd(cmd)
+        cmd = """echo 'source ~/devspace/rigger-ng/rigger.rc' > $DST/_rigger.rc  """
+        cmd = Template(cmd).substitute(DST=os.getcwd())
+        print cmd
+        # exit
+        shexec.execmd(cmd)
+
+# class (run_base,resconf_able,cmdtag_run):
 #     """execut php eg: rg php -f 'xxx.php arg1 arg2'  """
 #     def _config(self,argv,rargs):
 #         run_base._config(self,argv,rargs)

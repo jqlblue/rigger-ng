@@ -4,7 +4,8 @@ import interface
 import res
 from utls.rg_io import rg_logger
 
-
+#加载配置文件
+#默认conf.yaml的加载器
 class conf_loader:
     def  __init__(self,conf):
         self.conf    = conf
@@ -21,6 +22,8 @@ class conf_loader:
         if not os.path.exists(self.conf) :
             raise interface.rigger_exception("unfound file: %s" %self.conf )
         doc = open(self.conf,"r").read()
+        #自定义yaml语法解析
+        #将import的文件使用正则替换掉
         doc = re.sub(r"""#!import *["'](.*)["']""",self.replace,doc)
         return doc
 

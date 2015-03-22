@@ -10,8 +10,9 @@ import impl.rg_dev , impl.rg_ioc
 
 
 
-
-
+#help指令的实现
+#调用时 help res  ‘资源名’（如mysql）
+#如果 不加资源则 表示全部显示
 class help_cmd(rg_cmd,cmdtag_rg):
     def _execute(self,rargs):
         ver  =  impl.rg_dev.version(os.path.join(rargs.rg.root ,"version.txt" ))

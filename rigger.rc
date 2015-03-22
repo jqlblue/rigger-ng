@@ -1,0 +1,17 @@
+RG_ROOT=/home/q/tools/rigger
+R_RG_ROOT=/home/q/tools/pylon_rigger
+A_RG_ROOT=/home/q/tools/rigger_alpha
+alias srg='sudo $RG_ROOT/rigger  ' 
+alias rg='$RG_ROOT/rigger  ' 
+alias rgback='$R_RG_ROOT/userg.sh'
+
+VER=`cat $_RG_ROOT/version.txt`
+clear
+echo 
+echo "*******************************************************************************"
+echo "*******************************************************************************"
+echo "****                         PYLON RIGGER ENV       ver:$VER       *****"
+echo "*                            cmd:   rg, srg                                    * " 
+echo "*                              Happy Using                                     * " 
+echo "*                                                support by zuowenjian@360.cn  * " 
+echo "********************************************************************************"

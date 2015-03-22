@@ -5,7 +5,7 @@ from utls.rg_io import rgio ,rg_logger
 import logging
 
 
-
+#存储rg参数的实体
 class rg_args :
     def __init__(self):
         self.conf          = os.getcwd() + "/_rg/conf.yaml"
@@ -18,12 +18,16 @@ class rg_args :
     def clear(self):
         pass
 
-
+#存储项目参数的实体
 class prj_args :
     def __init__(self):
+        #环境 包含env demo online等
         self.env  = None
+        #配置的参数
         self.conf = None
+        #系统 front admin等
         self.sys  = None
+        #指令集
         self.cmds = []
 
     def clear(self):
@@ -34,6 +38,7 @@ class prj_args :
         return "%s -e %s -s %s" %(cmd,self.env,self.sys)
 
 
+#运行时的参数实体
 class run_args :
     def __init__(self):
         self.rg  = rg_args()
@@ -52,6 +57,7 @@ class run_args :
         cmdarr = self.cmds[0].split(',')
         return cmdarr
 
+    #加载 上一次参数实体
     @staticmethod
     def load(data_file):
         rargs     = run_args()
@@ -61,26 +67,29 @@ class run_args :
                     rargs = pickle.load(f)
             except Exception as  e :
                 rgio.prompt("load rigger file fail!")
-
+        #清空实体
         rargs.clear()
         return rargs
+
+    #将本对象系列化到配置文件中
     def save(self,data_file):
         with open(data_file,'w')  as f:
             pickle.dump(self, f)
 
+    #更新实体的参数
     def parse_update(self,parser) :
-        argv          = parser.argv
+        self.argv          = parser.argv
         self.prj.cmds = parser.cmds
-        if argv.has_key('-c') :
-            self.prj.conf  = argv['-c']
-        if argv.has_key('-z'):
-            self.rg.user  = argv['-z']
-        if argv.has_key('-e'):
-            self.prj.env  = argv['-e']
-        if argv.has_key('-o'):
-            self.rg.os    = argv['-o']
-        if argv.has_key('-s'):
-            self.prj.sys = argv['-s']
+        if self.argv.has_key('-c') :
+            self.prj.conf  = self.argv['-c']
+        if self.argv.has_key('-z'):
+            self.rg.user  = self.argv['-z']
+        if self.argv.has_key('-e'):
+            self.prj.env  = self.argv['-e']
+        if self.argv.has_key('-o'):
+            self.rg.os    = self.argv['-o']
+        if self.argv.has_key('-s'):
+            self.prj.sys = self.argv['-s']
 
 
     def __str__(self):
@@ -115,6 +124,7 @@ class rarg_parser:
                 rg_logger.info ( "old prior vars ignore:  %s " % rargs.vars_def)
 
 
+    #解析用户输入的参数
     def parse(self,argv):
 
         self.__init__()
@@ -125,6 +135,7 @@ class rarg_parser:
             item = item.strip()
             while True:
                 if status == self.ST_ARG_VAL:
+                    #正则分析指令
                     if re.match(r'-\w+',item) :
                         status  = self.ST_NEXT
                         continue

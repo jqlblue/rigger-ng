@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 import  re , os , string ,  getopt ,sys , unittest,logging
 
 
@@ -18,5 +22,7 @@ if __name__ == '__main__':
     from impl_tc.cmd_tc   import *
     from res_tc.mysql_tc  import *
     from res_tc.files_tc  import *
+    from res_tc.daemon_tc  import *
+    from res_tc.share_dict_tc  import *
 
     unittest.main()
