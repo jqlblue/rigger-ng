@@ -19,6 +19,8 @@ def setup() :
     interface.regist_res("mysql"                               , "res.mysql")
 
     interface.regist_res("daemon,daemon_php"                               , "res.daemon")
+    interface.regist_res("shell,dx_shell"                               , "res.shell")
+
 
 
    #注册系统指令
@@ -29,7 +31,7 @@ def setup() :
 
     #注入共享内存和对共享内存的操作
     interface.regist_res("share_dict"                               , "res.share_dict")
-    interface.regist_cmd("find", "impl.rg_cmd.rg_cmd_prj")
+    interface.regist_cmd("find,shell,depend", "impl.rg_cmd.rg_cmd_prj")
 
 def list_res() :
     import  res

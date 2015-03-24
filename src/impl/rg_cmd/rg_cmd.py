@@ -18,7 +18,7 @@ class help_cmd(rg_cmd,cmdtag_rg):
         ver  =  impl.rg_dev.version(os.path.join(rargs.rg.root ,"version.txt" ))
         rgio.simple_out("rigger-ng ver: " + ver.info())
         cmdlen = len(rargs.prj.cmds)
-        print(rargs.prj.cmds)
+        # print(rargs.prj.cmds)
         if cmdlen == 1 :
             rargs.help()
             impl.rg_ioc.list_cmd()

@@ -170,10 +170,23 @@ class find_cmd(prj_cmd_base,cmdtag_prj):
     def _execute(self,rargs):
 
         self.runcmd(rargs,lambda x,y : x.find(y))
-        # from  res import  share_dict
-        #
-        # dict = share_dict()
-        # dict.find(rargs)
+
+class shell_cmd(prj_cmd_base,cmdtag_prj):
+
+    """
+    rg shell  -e env -s <sys> [-o <os>] "
+    """
+    def _execute(self,rargs):
+        self.runcmd(rargs,lambda x,y : x.shell(y))
+
+class depend_cmd(prj_cmd_base,cmdtag_prj):
+
+    """
+    rg depend  -e env -s <sys> [-o <os>] "
+    """
+    def _execute(self,rargs):
+
+        self.runcmd(rargs,lambda x,y : x.depend(y))
 
 
 class init_cmd(prj_cmd_base,cmdtag_prj):

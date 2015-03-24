@@ -20,9 +20,10 @@ if __name__ == '__main__':
     from impl_tc.vars_tc  import *
     from impl_tc.args_tc  import *
     from impl_tc.cmd_tc   import *
-    from res_tc.mysql_tc  import *
-    from res_tc.files_tc  import *
-    from res_tc.daemon_tc  import *
-    from res_tc.share_dict_tc  import *
+    # from res_tc.mysql_tc  import *
+    # from res_tc.files_tc  import *
+    # from res_tc.daemon_tc  import *
+    # from res_tc.share_dict_tc  import *
+    from res_tc.shell_tc  import *
 
     unittest.main()

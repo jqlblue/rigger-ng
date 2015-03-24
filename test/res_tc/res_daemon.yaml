@@ -16,10 +16,10 @@ _sys:
     -  !R.system
         _name: "daemon"
         _res:
-            # - !R.daemon
-            #      script : "${PRJ_ROOT}/test/res_tc/res_daemon_tc.sh"
-            #      worker : 1
-            - !R.daemon_php
-                 script : "${PRJ_ROOT}/test/res_tc/res_daemon_tc.php"
+            - !R.daemon
+                 script : "${PRJ_ROOT}/test/res_tc/res_daemon_tc.sh"
                  worker : 1
+            # - !R.daemon_php
+            #      script : "${PRJ_ROOT}/test/res_tc/res_daemon_tc.php"
+            #      worker : 1
 

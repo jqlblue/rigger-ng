@@ -44,9 +44,16 @@ class controlable :
         pass
     def _info(self,context):
         return ""
+
+   #新添加的指令
     def find(self,context):
         pass
 
+    def shell(self,context):
+        pass
+
+    def depend(self,context):
+        pass
 
 #以aop的方式执行以减少代码量和增加可扩展性
 def control_call(res,fun,context,tag) :
@@ -120,6 +127,14 @@ class control_box(controlable):
     def find(self,context):
         fun = lambda x,y : x.find(y)
         self.items_call(fun,context,'find')
+
+    def shell(self,context):
+        fun = lambda x,y : x.shell(y)
+        self.items_call(fun,context,'shell')
+
+    def depend(self,context):
+        fun = lambda x,y : x.depend(y)
+        self.items_call(fun,context,'depend')
 
     def _allow(self,context):
         return True
