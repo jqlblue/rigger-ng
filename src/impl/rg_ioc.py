@@ -31,6 +31,7 @@ def setup() :
 
     #注入共享内存和对共享内存的操作
     interface.regist_res("share_dict"                               , "res.share_dict")
+    interface.regist_res("crontab"                               , "res.crontab")
     interface.regist_cmd("find,shell,depend", "impl.rg_cmd.rg_cmd_prj")
 
 def list_res() :

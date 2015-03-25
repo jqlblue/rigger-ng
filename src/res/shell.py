@@ -15,7 +15,7 @@ class shell(interface.resource):
 
     """
       - !R.shell
-             script: "${PRJ_ROOT}/data/init.sh"
+           script: "${PRJ_ROOT}/data/init.sh"
     """
     script = ""
 

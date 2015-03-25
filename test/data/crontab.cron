@@ -1,0 +1,1 @@
+*/1 * * * * (cd ~/devspace/rigger-ng/;   ~/devspace/rigger-ng/test/data/init.sh start  >>  ~/devspace/rigger-ng/test/data/daemon_test.txt  2>&1 )

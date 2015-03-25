@@ -1,0 +1,25 @@
+
+_env:
+    - !R.env
+        _name: "dev"
+
+_prj: !R.project
+       _name: "rigger-test"
+       _res:
+        - !R.vars
+                PRJ_NAME: "RG_UT"
+                PRJ_KEY : "RG_UT"
+                PRJ_ROOT: "${HOME}/devspace/rigger-ng"
+                RUN_PATH: "${PRJ_ROOT}/run/"
+                PHP_INI: "${PRJ_ROOT}/test/data/php.ini"
+        # - !R.shell
+        #         script: "${PRJ_ROOT}/test/data/init.sh"
+_sys:
+    -  !R.system
+        _name: "crontab"
+        _res:
+           - !R.vars
+                PRJ_ROOT: "${HOME}/devspace/rigger-ng"
+                APP_SYS         : "crontab"
+           - !R.crontab
+                cron: "${PRJ_ROOT}/test/data/crontab.cron"
