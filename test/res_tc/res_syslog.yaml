@@ -13,11 +13,9 @@ _prj: !R.project
 
 _sys:
     -  !R.system
-        _name: "shell"
+        _name: "syslog"
         _res:
             - !R.vars
                 test: "have a release"
-            - !R.shell
-               script: "${PRJ_ROOT}/test/data/init.sh"
-            # - !R.dx_shell
-            #    script: "echo 'hello'"
+            - !R.syslog
+               script: "echo 'hello'"

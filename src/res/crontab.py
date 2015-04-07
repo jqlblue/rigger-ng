@@ -5,8 +5,8 @@ import os,sys,getopt
 from utls.rg_var import value_of
 from string import *
 from utls.rg_sh  import shexec
-from   utls.rg_io import rgio
-
+from utls.rg_io import rgio
+from utls.rg_utls import get_rg_home
 from php import php,python
 
 
@@ -43,7 +43,7 @@ $PYTHON $CURPATH/sysconf.py  -n $KEY -f $ORI_CRON -t '#' -c $CRON -p file ;
 crontab $ORI_CRON
 """
         #指定要运行文件sysconf的路径
-        path =  os.path.join(os.path.abspath(os.path.dirname(__file__) + '/../'),'utls')
+        path =  os.path.join(get_rg_home(),'utls')
         c = Template(cmdtpl).substitute(PYTHON=python.bin,CURPATH=path,KEY=self.key, ORI_CRON=self.tmp_cron,CRON=self.cron)
         shexec.execmd(c,True)
 
@@ -54,8 +54,7 @@ $PYTHON $CURPATH/sysconf.py  -n $KEY -f $ORI_CRON -t '#' -c ''  ;
 crontab $ORI_CRON
 """
         #指定要运行文件sysconf的路径
-        path =  os.path.join(os.path.abspath(os.path.dirname(__file__) + '/../'),'utls')
+        path =  os.path.join(get_rg_home(),'utls')
         c       = Template(cmdtpl).substitute(PYTHON=python.bin,CURPATH=path,KEY=self.key,ORI_CRON=self.tmp_cron,CRON=self.cron)
-        # print c
         shexec.execmd(c,True)
     pass

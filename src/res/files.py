@@ -79,7 +79,8 @@ class link(interface.resource,res_utls):
 
 class path(interface.resource,res_utls):
     """
-    Ã¥Â»ÂºÃ§Â«Âpath
+    在vim中执行<F8>的时候初始化目录路径
+    并给目录赋予（o+w）权限
     !R.path:
         dst: "/home/q/system/mysys/"
         keep: True

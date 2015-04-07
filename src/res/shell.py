@@ -68,9 +68,10 @@ class shell(interface.resource):
 # @brief 直接运行shell指令
 class dx_shell(interface.resource):
 
-#     def __init__(self,env,script):
-# #        self.env = env
-#         self.script = script
+    """
+      - !R.shell
+           script: "echo 'hello'"
+    """
     def _before(self,context):
 #        self.env.locate()
         self.script = value_of(self.script)

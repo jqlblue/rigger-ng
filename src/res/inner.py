@@ -17,7 +17,7 @@ class vars(interface.resource):
 
     def _allow(self,context):
         return True
-    #将配置文件中的vars的kv加载如上下文对象
+
     def _before(self,context):
         items = self.__dict__
         # run_struct.push("res.var")
@@ -26,7 +26,9 @@ class vars(interface.resource):
             if re.match(r'__.+__',name):
                 continue
             name= name.upper()
+            #将配置文件中的vars的kv加载如上下文对象
             setattr(context,name,val)
+
         utls.rg_var.import_dict(items)
     def _after(self,context):
         pass

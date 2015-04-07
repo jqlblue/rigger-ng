@@ -209,6 +209,16 @@ class init_cmd(prj_cmd_base,cmdtag_prj):
         # exit
         shexec.execmd(cmd)
 
+class showconf_cmd(prj_cmd_base,cmdtag_prj):
+    """
+    查看当前配置
+    """
+    def _execute(sel,rargs):
+        # prj_cmd_base._execute(self,cmd,rargs)
+        rgio.simple_out(str(rargs))
+
+
+
 # class (run_base,resconf_able,cmdtag_run):
 #     """execut php eg: rg php -f 'xxx.php arg1 arg2'  """
 #     def _config(self,argv,rargs):

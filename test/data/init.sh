@@ -1,7 +1,8 @@
 #!/bin/bash
+echo $PRJ_ROOT
 case $1 in
         start)
-           echo "start";;
+           echo " ${PRJ_ROOT}  start";;
         stop)
            echo "stop";;
         data)

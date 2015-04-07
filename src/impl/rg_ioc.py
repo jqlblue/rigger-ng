@@ -18,6 +18,7 @@ def setup() :
     interface.regist_res("link,path,intertpl,file_tpl"         , "res.files")
     interface.regist_res("mysql"                               , "res.mysql")
 
+    interface.regist_res("syslog"                               , "res.syslog")
     interface.regist_res("daemon,daemon_php"                               , "res.daemon")
     interface.regist_res("shell,dx_shell"                               , "res.shell")
 
@@ -25,7 +26,7 @@ def setup() :
 
    #注册系统指令
     interface.regist_cmd("check,clean,info,init"                    , "impl.rg_cmd.rg_cmd_prj")
-    interface.regist_cmd("conf,reconf,start,stop,restart,data" , "impl.rg_cmd.rg_cmd_prj")
+    interface.regist_cmd("conf,reconf,start,stop,restart,data,showconf" , "impl.rg_cmd.rg_cmd_prj")
     interface.regist_cmd("help"                                , "impl.rg_cmd.rg_cmd")
 
 
