@@ -14,3 +14,10 @@ rg start
 rg stop
 rg clean
 ```
+
+## 其它
+
+### 成生项目
+```
+rg tpl -t < template dir >  -o < dest dir>
+```
