@@ -1,4 +1,4 @@
-# 结构
+# 结构资源
 
 ## env
 ``` yaml
@@ -62,7 +62,7 @@ _mod:
           value  : "${Y}"
           expect : "hello"
 ```
-# 扩展
+# 扩展资源
 
 ## daemon
 示例:
@@ -84,5 +84,5 @@ property:
 ```
 #帮助
 
-通过 rg help res 可以查看资源列表
-通过 rg help res <youres> 可以查看 youres 资源的具体信息
+*通过 rg help res 可以查看资源列表*
+*通过 rg help res <youres> 可以查看 youres 资源的具体信息*
