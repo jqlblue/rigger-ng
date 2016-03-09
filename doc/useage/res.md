@@ -1,4 +1,4 @@
-#
+# 结构
 
 ## env
 ``` yaml
@@ -47,5 +47,28 @@ _mod:
 - !R.using
     path          : "${PRJ_ROOT}/_rg/modul.yaml"
     modul         : "m1"
+```
+
+# 内建
+
+# 扩展
+
+## daemon
+示例:
+``` yaml
+
+```
+属性:
+```
+property:
+	 forever         : "True"
+	 script          : ""
+	 logpath         : "${RUN_PATH}"
+	 confpath        : "${PRJ_ROOT}/conf/used"
+	 umask           : "022"
+	 tag             : ""
+	 daemon          : "True"
+	 zdaemon         : "/usr/local/python/bin/zdaemon"
+	 runpath         : "${RUN_PATH}"
 ```
 
