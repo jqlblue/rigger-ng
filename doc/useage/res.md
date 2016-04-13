@@ -1,4 +1,4 @@
-#
+# 结构资源
 
 ## env
 ``` yaml
@@ -49,3 +49,40 @@ _mod:
     modul         : "m1"
 ```
 
+# 内建资源
+## echo
+```
+      - !R.echo
+          value         : "${PRJ_ROOT}"
+```
+## assert_eq
+
+```
+      - !R.assert_eq
+          value  : "${Y}"
+          expect : "hello"
+```
+# 扩展资源
+
+## daemon
+示例:
+``` yaml
+
+```
+属性:
+```
+property:
+	 forever         : "True"
+	 script          : ""
+	 logpath         : "${RUN_PATH}"
+	 confpath        : "${PRJ_ROOT}/conf/used"
+	 umask           : "022"
+	 tag             : ""
+	 daemon          : "True"
+	 zdaemon         : "/usr/local/python/bin/zdaemon"
+	 runpath         : "${RUN_PATH}"
+```
+#帮助
+
+*通过 rg help res 可以查看资源列表*
+*通过 rg help res <youres> 可以查看 youres 资源的具体信息*

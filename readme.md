@@ -49,5 +49,5 @@
 ## [使用指南] (doc/use_guide.md)
 ## extends
 
-### [res](src/extends/res/readme.md)
-### [module](src/extends/moduls/readme.md)
+### [res](doc/useage/res.md)
+### [module](doc/useage/module.md)
