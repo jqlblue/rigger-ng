@@ -22,6 +22,10 @@ rg restart [-s <sys>]
 rg reload [-s <sys>]
 ```
 
+#工程指令
+## rc 
+## sonar
+
 # 其它指令
 ## init
 ```
