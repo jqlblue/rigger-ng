@@ -1,6 +1,13 @@
+# 熟记指令
+## help 
+```
+rg help [<command> [<subcommand>]] 
+eg:
+rg help res
+rg help res mysql
+```
 
-
-# 系统控制
+# 系统控制指令
 ## conf
 
 ```
@@ -15,7 +22,7 @@ rg restart [-s <sys>]
 rg reload [-s <sys>]
 ```
 
-# 其它
+# 其它指令
 ## init
 ```
 rg init 
