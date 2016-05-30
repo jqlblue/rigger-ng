@@ -3,7 +3,7 @@
 ## 调用  !R.using
 
 示例
-```
+``` yaml
 - !R.using
     path  : "/home/x/tools/rigger-ng/extends/moduls/pylon.yaml"
     modul : "pylon_web"
@@ -58,7 +58,7 @@
 * php: /usr/local/php-5.6
 
 示例
-```
+``` yaml
 - !R.using
     path  : "/home/x/tools/rigger-ng/extends/moduls/pylon.yaml"
     modul : "pylon_web"
@@ -71,7 +71,7 @@
 * MOD_TAG    TAG
 * MOD_INCLUDE  需要的PHP include
 
-```
+``` yaml
 - !R.using
     path  : "/home/x/tools/rigger-ng/extends/moduls/pylon.yaml"
     modul : "pylon_php"
