@@ -26,9 +26,9 @@
                   conf_tpl : "${TPL_ROOT}/${MOD_TAG}_fpm.conf"
 ```
 
-_name : 模块名称
-_args : 模块参数
-_res  : 模块资源
+- _name : 模块名称
+- _args : 模块参数
+- _res  : 模块资源
 
 #extends/pylon
 
