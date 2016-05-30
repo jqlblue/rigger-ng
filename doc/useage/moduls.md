@@ -1,4 +1,38 @@
+#modul机制
+ 
+示例
+``` yaml
+      - !R.modul
+          _name : "pylon_web"
+          _args :
+              MOD_TAG:     None
+              MOD_ENTRY:   None
+              MOD_INCLUDE: None
+          _res  :
+              - !R.vars
+                  tpl_root : "${PRJ_ROOT}/conf/options/"
+                  use_root : "${PRJ_ROOT}/conf/used/"
+              - !R.pylon_autoload
+                  include  : "${MOD_INCLUDE}"
+              - !R.pylon_router
+                  include  : "${MOD_ENTRY}"
+              - !R.nginx_conf
+                  sudo     : true
+                  src      : "${USE_ROOT}/${MOD_TAG}_ngx.conf"
+                  tpl      : "${TPL_ROOT}/${MOD_TAG}_ngx.conf"
+              - !R.fpm
+                  sudo     : True
+                  ini_tpl  : "${TPL_ROOT}/${MOD_TAG}_php.ini"
+                  conf_tpl : "${TPL_ROOT}/${MOD_TAG}_fpm.conf"
+```
+
+_name : 模块名称
+_args : 模块参数
+_res  : 模块资源
+
 #extends/pylon
+
+
 
 ## pylon_web
 * MOD_TAG    TAG
